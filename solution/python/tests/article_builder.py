@@ -1,10 +1,14 @@
 from datetime import datetime
 
+from faker import Faker
+
 from blog.article import Article, Comment
 
 AUTHOR = "Pablo Escobar"
 COMMENT_TEXT = "Amazing article !!!"
 CREATION_DATE = datetime(2024, 11, 5, 13, 0, 1)
+
+fake = Faker()
 
 
 def time_provider() -> datetime:
@@ -13,8 +17,8 @@ def time_provider() -> datetime:
 
 class ArticleBuilder:
     def __init__(self):
-        self._name = "Default Article"
-        self._content = "Default content"
+        self._name = fake.name()
+        self._content = fake.text()
         self._comments = []
         self._time_provider = time_provider
 
