@@ -96,13 +96,16 @@ public class ArticleTests
             .MapFilter(s => s, s => !string.IsNullOrWhiteSpace(s));
 
         [Property]
-        public Property When_Adding_An_Existing_Comment_Then_It_Should_Fail()
+        // Never trust a test you have not seen failed
+        // Should return the Property here
+        public void When_Adding_An_Existing_Comment_Then_It_Should_Fail()
             => Prop.ForAll(NonEmptyString, NonEmptyString,
                 (comment, author) =>
                     AnArticle().Build()
                         .AddComment(comment, author)
                         .Bind(a => a.AddComment(comment, author))
-                        .IsLeft);
+                        .IsLeft
+                    );
     }
 
     private void Given(ArticleBuilder articleBuilder) => _result = articleBuilder.Build();
