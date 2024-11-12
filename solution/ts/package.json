@@ -6,6 +6,8 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^9.0.3",
+    "@stryker-mutator/jest-runner": "^8.6.0",
+    "@stryker-mutator/typescript-checker": "^8.6.0",
     "@types/jest": "^29.5.8",
     "fast-check": "^3.22.0",
     "fp-ts": "^2.16.9",
